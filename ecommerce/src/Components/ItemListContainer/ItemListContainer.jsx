@@ -9,10 +9,10 @@ import { db } from "../../service/firebase/config";
 const ItemListContainer = (props) => {
   const [productos, setProductos] = useState([]);
 
-  const { idCategoria } = useParams();
+  const { idCategory } = useParams();
 
   useEffect(() => {
-    const misProductos = idCategoria ? query(collection(db, "productos"), where("idCat", "==", idCategoria)) : collection(db, "productos");
+    const misProductos = idCategory ? query(collection(db, "productos"), where("idCat", "==", idCategory)) : collection(db, "productos");
     getDocs(misProductos)
     .then(res => {
       const nuevosProductos = res.docs.map(doc => {
@@ -22,7 +22,7 @@ const ItemListContainer = (props) => {
       setProductos(nuevosProductos);
     })
     .catch(error => console.log(error))
-  }, [idCategoria])
+  }, [idCategory])
 
 
 
