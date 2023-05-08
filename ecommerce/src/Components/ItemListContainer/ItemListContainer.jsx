@@ -12,16 +12,51 @@ const ItemListContainer = (props) => {
   const { idCategory } = useParams();
 
   useEffect(() => {
+
+
+
+    const getData = async () => {
+
+      const queryRef = !idCategory
+
+        ? collection(db, "productos")
+
+        : query(
+          collection(db, "productos"),
+          where("type", "==", idCategory)
+        );
+
+      const response = await getDocs(queryRef);
+
+      const productos = response.docs.map((doc) => {
+        const newProduct = {
+          ...doc.data(),
+          id: doc.id,
+        };
+
+        return newProduct;
+      });
+      setTimeout(() => {
+
+        setProducts(productos);
+
+      }, 1000)
+    };
+
+    getData();
+
+
+
     const misProductos = idCategory ? query(collection(db, "productos"), where("idCat", "==", idCategory)) : collection(db, "productos");
     getDocs(misProductos)
-    .then(res => {
-      const nuevosProductos = res.docs.map(doc => {
-        const data = doc.data()
-        return {id:doc.id, ...data}
+      .then(res => {
+        const nuevosProductos = res.docs.map(doc => {
+          const data = doc.data()
+          return { id: doc.id, ...data }
+        })
+        setProductos(nuevosProductos);
       })
-      setProductos(nuevosProductos);
-    })
-    .catch(error => console.log(error))
+      .catch(error => console.log(error))
   }, [idCategory])
 
 
