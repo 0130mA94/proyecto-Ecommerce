@@ -1,24 +1,36 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./ItemCount.css"
 
 
-export const useContador = (valorInicial, valorMaximo) => {
-    const [contador, setContador] = useState(valorInicial);
+const ItemCount = ({ inicial, stock, funcionAgregar }) => {
+    const [contador, setContador] = useState(inicial);
 
     const incrementar = () => {
-        if (contador < valorMaximo) {
+        if (contador < stock) {
             setContador(contador + 1);
         }
     }
 
     const disminuir = () => {
-        if (contador > valorInicial) {
+        if (contador > inicial) {
             setContador(contador - 1);
         }
     }
 
-    return {contador, incrementar, disminuir }
+    return (
+        <>
+            <div>
+                <button onClick={disminuir}>-</button>
+                <p>{contador}</p>
+                <button onClick={incrementar}>+</button>
+            </div>
+            <button onClick={() => funcionAgregar(contador)}>Agregar al carrito</button>
+
+        </>
+    )
 }
+
+export default ItemCount
 
 
 
