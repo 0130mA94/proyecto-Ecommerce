@@ -15,8 +15,8 @@ const ItemDetailContainer = () => {
         getDoc(nuevoDoc)
             .then(res => {
                 const data = res.data();
-                const nuevosProducto = { id: res.id, ...data }
-                setProducto(nuevosProducto);
+                const nuevoProducto = { id: res.id, ...data }
+                setProducto(nuevoProducto);
             })
             .catch(error => console.log(error))
 

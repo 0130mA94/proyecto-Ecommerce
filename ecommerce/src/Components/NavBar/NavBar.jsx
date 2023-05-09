@@ -1,19 +1,19 @@
-import { useState, useEffect } from 'react'
+//import { useState, useEffect } from 'react'
 import "./NavBar.css"
 import CardWidget from '../CartWidget/CartWidget'
 import {Link, NavLink} from "react-router-dom";
 
 
 const NavBar = () => {
-  const [category, setCategory] = useState("");
+  //const [category, setCategory] = useState("");
 
-  useEffect(() => {
+  /*useEffect(() => {
     document.title = `Categoría ${category}`
   }, [category]);
 
   const handleClick = (category) => {
     setCategory(category);
-  }
+  }*/
 
   return (
     <header>
@@ -23,9 +23,9 @@ const NavBar = () => {
 
       <nav>
         <ul>
-          <li  className='menu' onClick={() => handleClick  ("Comics")}><NavLink to={"/"}>Comics</NavLink></li>
-          <li className='menu' onClick={() => handleClick  ("Marvel")}><NavLink to={`/categoria/2`}>Marvel</NavLink></li>
-          <li className='menu' onClick={() => handleClick  ("DC")}><NavLink to={`/categoria/1`}>DC</NavLink></li>
+          <li  className='menu'><NavLink to={"/"}>Comics</NavLink></li>
+          <li className='menu' ><NavLink to={`/categoria/2`}>Marvel</NavLink></li>
+          <li className='menu'><NavLink to={`/categoria/1`}>DC</NavLink></li>
 
           
         </ul>

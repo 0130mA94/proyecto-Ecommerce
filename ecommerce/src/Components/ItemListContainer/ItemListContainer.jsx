@@ -9,45 +9,10 @@ import { db } from "../../service/firebase/config";
 const ItemListContainer = (props) => {
   const [productos, setProductos] = useState([]);
 
-  const { idCategory } = useParams();
+  const { idCategoria } = useParams();
 
   useEffect(() => {
-
-
-
-    const getData = async () => {
-
-      const queryRef = !idCategory
-
-        ? collection(db, "productos")
-
-        : query(
-          collection(db, "productos"),
-          where("type", "==", idCategory)
-        );
-
-      const response = await getDocs(queryRef);
-
-      const productos = response.docs.map((doc) => {
-        const newProduct = {
-          ...doc.data(),
-          id: doc.id,
-        };
-
-        return newProduct;
-      });
-      setTimeout(() => {
-
-        setProducts(productos);
-
-      }, 1000)
-    };
-
-    getData();
-
-
-
-    const misProductos = idCategory ? query(collection(db, "productos"), where("idCat", "==", idCategory)) : collection(db, "productos");
+    const misProductos = idCategoria ? query(collection(db, "productos"), where("idCat", "==", idCategoria)) : collection(db, "productos");
     getDocs(misProductos)
       .then(res => {
         const nuevosProductos = res.docs.map(doc => {
@@ -57,7 +22,7 @@ const ItemListContainer = (props) => {
         setProductos(nuevosProductos);
       })
       .catch(error => console.log(error))
-  }, [idCategory])
+  }, [])
 
 
 
