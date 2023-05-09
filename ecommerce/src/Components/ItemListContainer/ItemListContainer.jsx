@@ -22,7 +22,7 @@ const ItemListContainer = (props) => {
         setProductos(nuevosProductos);
       })
       .catch(error => console.log(error))
-  }, [])
+  }, [idCategoria])
 
 
 
