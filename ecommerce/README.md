@@ -68,3 +68,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+Funcionamiento de la app:
+
+Todo es bastante intuitivo como se puede manejar en la misma. Único detalle que para ingresar a las categorías de los productos se debe primero ir al detalle del mismo y luego ingresar a través del navBar.
+
+Esta Aplicación como bien se ve, es un Ecommerce dedicado a la venta de Comics. En esta oportunidad se puede ver sólo dos categorías: Marvel y DC, debido a que llevaría mucho más tiempo poder agregar otras editoriales y artículos tambíen.
